@@ -1,0 +1,15 @@
+export const PROJECT_ICONS = {
+  USER_PLUS: "user-plus",
+  USER: "user",
+  GEAR: "gear",
+  CLOSE: "close",
+  HOUSE: "house",
+  ANGLES_RIGHT: "angles-right",
+  PAPER_PLANE: "paper-plane",
+  PEN_CLIP: "pen-clip",
+  FODLER_OPEN: "folder-open",
+  MAGNIFYING_GLASS: "magnifying-glass",
+  PEN_NIB: "pen-nib",
+  CHEVRON_DOWN: "chevron-down",
+  CHEVRON_UP: "chevron-up",
+} satisfies Record<string, string>;

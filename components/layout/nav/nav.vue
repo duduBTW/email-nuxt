@@ -57,7 +57,7 @@ function newMail() {
             alt="Your profile picture"
           />
         </button>
-        <default-layout-profile-popup
+        <layout-nav-user-popup
           :user="user!"
           :users="users ?? []"
           @focusout="profielButtoRef?.focus()"

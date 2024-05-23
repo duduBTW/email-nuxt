@@ -93,17 +93,18 @@ onUnmounted(() => {
 
 <template>
   <ul ref="containerRef">
-    <email-list-item
-      v-for="email in emails"
-      @click="handleEmailClick(email)"
-      :key="email.id"
-      :data-id="email.id"
-      :is-selected="isSelected(email)"
-      :tabindex="isFocused(email) ? '0' : '-1'"
-      :primary-text="getPrimaryText(email)"
-      :secondaty-text="getSecondaryText(email)"
-      :profile-picture="getProfilePricture(email)"
-    />
+    <template v-for="email in emails" :key="email.id">
+      <core-email-list-item
+        v-if="email.recievers && email.recievers.length > 0"
+        @click="handleEmailClick(email)"
+        :data-id="email.id"
+        :is-selected="isSelected(email)"
+        :tabindex="isFocused(email) ? '0' : '-1'"
+        :primary-text="getPrimaryText(email)"
+        :secondaty-text="getSecondaryText(email)"
+        :profile-picture="getProfilePricture(email)"
+      />
+    </template>
   </ul>
 </template>
 

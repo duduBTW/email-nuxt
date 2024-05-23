@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import EmailList from "~/components/core/email/list/list.vue";
+import EmptyEmails from "~/components/core/email/list/empty.vue";
+
 const dialog = useDialog();
 const hasDialogOpen = computed(() => typeof dialog.value !== "undefined");
 
@@ -14,8 +17,8 @@ const isEmpty = computed(
 <template>
   <div class="container" :class="{ 'expandend-content': !hasDialogOpen }">
     <h2 class="subject">Your inbox</h2>
-    <email-list-empty v-if="recievedEmails === null || isEmpty" />
-    <email-list-content
+    <EmptyEmails v-if="recievedEmails === null || isEmpty" />
+    <EmailList
       v-else
       :get-primary-text="(email) => email.sender.name"
       :get-secondary-text="(email) => email.subject"

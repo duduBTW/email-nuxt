@@ -32,12 +32,12 @@ function handleOverlayClick(event: MouseEvent) {
         @click="(event) => handleOverlayClick(event)"
       />
 
-      <input-autocomplete :open="popupOpen">
-        <email-dialog-new-select
+      <core-popup :open="popupOpen">
+        <core-dialog-new-email-from-select-popup
           @close-popup="popupOpen = false"
           :users="users"
         />
-      </input-autocomplete>
+      </core-popup>
     </div>
   </div>
 </template>

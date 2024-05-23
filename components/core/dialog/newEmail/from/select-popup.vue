@@ -9,7 +9,7 @@ const itemsRef = ref<HTMLElement[]>([]);
 const focusableElementId = ref(getFocusableElementId(props.users![0]));
 
 const containerRef = useFocusTrap((trapElement) => {
-  findFirstFocusableElement(trapElement)?.focus();
+  focusOn(findFirstFocusableElement(trapElement));
 });
 
 const isFocused = (user: UserDto) => {
@@ -116,10 +116,11 @@ onMounted(() => {
     containerRef.value?.removeEventListener("focusout", handleFocus);
   });
 
-  if (containerRef.value) {
-    console.log(findFirstFocusableElement(containerRef.value));
-    findFirstFocusableElement(containerRef.value)?.focus();
+  if (!containerRef.value) {
+    return;
   }
+
+  focusOn(findFirstFocusableElement(containerRef.value));
 });
 
 onUnmounted(() => {
@@ -131,7 +132,7 @@ onUnmounted(() => {
 
 <template>
   <ul ref="containerRef">
-    <user-list-item
+    <core-user-list-item
       @click="selectUser(user)"
       v-for="user in users"
       :key="user.id"

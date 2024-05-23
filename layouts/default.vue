@@ -1,14 +1,19 @@
+<script setup lang="ts">
+import Nav from "~/components/layout/nav/nav.vue";
+import Dialog from "~/components/core/dialog/dialog.vue";
+</script>
+
 <template>
   <div class="layout">
-    <default-layout-sidebar />
-    <default-layout-nav />
+    <layout-sidebar />
+    <Nav />
     <main id="#main">
       <div class="list">
         <slot />
       </div>
 
-      <email-dialog-all />
-      <snackbar />
+      <Dialog />
+      <core-snackbar />
     </main>
   </div>
 </template>

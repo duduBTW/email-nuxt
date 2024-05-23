@@ -7,8 +7,8 @@ const state = useDialog();
     v-if="typeof state !== 'undefined'"
     class="container dialog-container-size"
   >
-    <email-dialog-new v-if="state.type === 'newEmail'" />
-    <email-dialog-details
+    <core-dialog-new-email v-if="state.type === 'newEmail'" />
+    <core-dialog-email
       v-else-if="state.type === 'email'"
       :metadata="state.metadata"
     />

@@ -1,5 +1,7 @@
-export function useFocusTrap(onFocus: (trapElement: HTMLDivElement) => void) {
-  const trapRef = ref<HTMLDivElement | null>();
+export function useFocusTrap<T extends HTMLElement = HTMLDivElement>(
+  onFocus: (trapElement: T) => void
+) {
+  const trapRef = ref<T | null>();
 
   const handleFocus = (event: FocusEvent) => {
     const trapElement = trapRef.value;

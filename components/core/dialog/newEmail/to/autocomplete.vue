@@ -5,10 +5,12 @@ const selectedUserIndex = ref(0);
 const changeTimeoutRef = ref<NodeJS.Timeout>();
 const updateTextareaOffsetTimeout = ref<NodeJS.Timeout>();
 const itemRefs = ref<HTMLElement[]>([]);
-const textareaRef = ref<HTMLElement>();
-
 const inputOffset = reactive({ top: 0, left: 0 });
 const emailStore = useNewEmailStore();
+
+const textareaRef = useFocusTrap<HTMLTextAreaElement>(() => {
+  openToPopover.value = false;
+});
 
 const showToPopover = computed(
   () => (usersNotAdded.value ?? []).length > 0 && openToPopover.value
@@ -244,9 +246,9 @@ function handleEnterPress() {
         aria-controls="suggestions"
       />
 
-      <input-autocomplete :open="showToPopover">
+      <core-popup :open="showToPopover">
         <ul role="listbox" id="suggestions">
-          <user-list-item
+          <core-user-list-item
             role="option"
             @click="selectUser(user)"
             @mouseover="selectedUserIndex = index"
@@ -257,7 +259,7 @@ function handleEnterPress() {
             :class="{ focused: selectedUserIndex === index }"
           />
         </ul>
-      </input-autocomplete>
+      </core-popup>
     </div>
   </div>
 </template>

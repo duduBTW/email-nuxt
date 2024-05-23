@@ -83,6 +83,14 @@ button {
   p {
     padding: 4px 0px;
   }
+
+  p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #adb5bd;
+    pointer-events: none;
+    height: 0;
+  }
 }
 
 :root {

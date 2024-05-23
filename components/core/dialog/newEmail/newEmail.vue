@@ -39,8 +39,8 @@ onMounted(() => {
 <template>
   <div class="new-container">
     <form>
-      <email-dialog-new-from-select />
-      <input-new-email-autocomplete />
+      <core-dialog-new-email-from-select />
+      <core-dialog-new-email-to-autocomplete />
 
       <div class="input-group">
         <label for="recievers">Subject:</label>

@@ -1,6 +1,7 @@
 import StarterKit from "@tiptap/starter-kit";
 import { type Extensions } from "@tiptap/vue-3";
 import { Extension } from "@tiptap/core";
+import Placeholder from "@tiptap/extension-placeholder";
 
 const CustomExtension = Extension.create({
   name: "customExtension",
@@ -21,4 +22,10 @@ const CustomExtension = Extension.create({
   // Your code goes here.
 });
 
-export const tiptapExtensions: Extensions = [StarterKit, CustomExtension];
+export const tiptapExtensions: Extensions = [
+  StarterKit,
+  CustomExtension,
+  Placeholder.configure({
+    placeholder: "Email content...",
+  }),
+];

@@ -1,28 +1,7 @@
 <script setup lang="ts">
-import { provide, reactive } from "vue";
-
-// public
-type Callback = (type: string) => void;
-type AutocompleteInjectData = typeof providedObject;
-const inputAutocompleteInjectKey = Symbol("input-autocomplete");
-
-// private
-const subiscribers = reactive<Record<string, Callback>>({});
-
 defineProps<{
   open: boolean;
 }>();
-
-const providedObject = {
-  subiscribe: (id: string, callback: Callback) => {
-    subiscribers[id] = callback;
-  },
-  ubSubiscribe: (id: string) => {
-    delete subiscribers[id];
-  },
-} as const;
-
-provide(inputAutocompleteInjectKey, providedObject);
 </script>
 
 <template>
